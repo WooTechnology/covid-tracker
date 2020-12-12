@@ -2,9 +2,9 @@
 
 _Main Repository for WooTech Mentorship Programme_
 
-Mentees : Rumali Siddiqua, Monalika Kapoor
+**Mentees : Rumali Siddiqua, Monalika Kapoor**
 
-Mentor : Shreoshi Roy
+**Mentor : Shreoshi Roy**
 
 This is the repository that contains all the details and timeline to work with during the mentorship programme. A few points of administration:
 
@@ -26,13 +26,13 @@ The Corona Virus outbreak is a pandemic that has impacted billions of lives worl
 
 ## Tech Stack
 
-1. Language: HTML, CSS, JavaScript
+1. **Language:** HTML, CSS, JavaScript
 
-2. Framework: Bootstrap
+2. **Framework:** Bootstrap
 
-3. Library: Chart.js
+3. **Library:** Chart.js
 
-4. Git: pull, push, add, commit
+4. **Git:** pull, push, add, commit
 
 
 ## Timeline
