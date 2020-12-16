@@ -67,4 +67,4 @@ Designing and developing the News page and/or adding dark theme to the website
 
 ### Week 8
 
-Improving responsiveness of the website and working on Documentation
+Improving responsiveness of the website and working on Documentation 
