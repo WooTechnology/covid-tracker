@@ -46,21 +46,25 @@ country_list.forEach((country) => {
     user_country = country.name;
   }
 });
+fetchData(user_country);
 
 function get_countries2d(){
-  for(i=0; i<country_list.length;++i){
-    // console.log(country_list[i].name);
-    function1(country_list[i].name);
+  // for(i=0; i<country_list.length;++i){
+    for(i=0; i<9;++i){
+     console.log(country_list[i].name);
+      function1(country_list[i].name);
   }
-  for(i=0; i<country_list.length;++i){
-    countries2d.push([country_list[i], parseInt(country2dlast_confirmed[i])]);
-  }
-  // console.log(countries2d);
+  // for(i=0; i<country_list.length;++i){
+  //   countries2d.push([country_list[i].name, parseInt(country2dlast_confirmed[i])]);
+  // }
+  // console.log("countries 2d array is ");
+  //  console.log(countries2d);
 }
 get_countries2d();
 
-function function1(country){
-  user_country = country;
+  function function1(country){
+  country_name = country;
+  // console.log("user country is" + country_name);
   country2dcases_list = [];
 
   var requestOptions = {
@@ -79,26 +83,29 @@ function function1(country){
         return res.json();
       })
       .then((data) => {
+        // console.log("inside then(data) for " + country);
         data.forEach((entry) => {
-          // dates.push(entry.Date);
+          
           // console.log(entry.Cases);
-          country2dcases_list.push(entry.Cases);
-          // console.log(cases_list[cases_list.length-1]);
+           country2dcases_list.push(entry.Cases);
         });
-        country2dlast_confirmed.push(country2dcases_list[country2dcases_list.length-1]);
+        // console.log(country2dcases_list[country2dcases_list.length-1]);
+        countries2d.push([country, country2dcases_list[country2dcases_list.length-1]]);
+        // country2dlast_confirmed.push(country2dcases_list[country2dcases_list.length-1]);
       });
     };
   
     api_fetch(country);  
   }
   
-  fetchData(user_country);
+  
 
 
 
 
 
 function fetchData(country) {
+  // console.log("fetchdata running")
     user_country = country;
     country_name_element.innerHTML = "Loading...";
   
@@ -183,7 +190,7 @@ function fetchData(country) {
     
   }
   
-  fetchData(user_country);
+  // fetchData(user_country);
   
   // UPDATE UI FUNCTION
   function updateUI() {
@@ -194,11 +201,11 @@ function fetchData(country) {
   function updateStats() {
     const total_cases = cases_list[cases_list.length - 1];
     // const new_confirmed_cases = total_cases - cases_list[cases_list.length - 2];
-  
+    
     const total_recovered = recovered_list[recovered_list.length - 1];
     // const new_recovered_cases =
     //   total_recovered - recovered_list[recovered_list.length - 2];
-       
+    
     const total_deaths = deaths_list[deaths_list.length - 1];
     // const new_deaths_cases = total_deaths - deaths_list[deaths_list.length - 2];
     const total_country = country_list.length;
@@ -209,10 +216,13 @@ function fetchData(country) {
     // new_recovered_element.innerHTML = `+${new_recovered_cases}`;
     deaths_element.innerHTML = total_deaths;
     // new_deaths_element.innerHTML = `+${new_deaths_cases}`;
+    active_element.innerHTML= total_cases- total_recovered;
   country_element.innerHTML = country_list.length;
   world_confirmed_element.innerHTML= world_confirmed_data;
   world_recovered_element.innerHTML= world_recovered_data;
   world_deaths_element.innerHTML= world_deaths_data;
+  
+  
 
     // format dates
     dates.forEach((date) => {
@@ -222,7 +232,7 @@ function fetchData(country) {
     // console.log(formatedDates[formatedDates.length-1]);
     weekday_7 = formatedDates[formatedDates.length-7];
     sliced_7 = weekday_7.slice(0, 2);
-    console.log(sliced_7);
+    // console.log(sliced_7);
     weekday_6 = formatedDates[formatedDates.length-6];
     sliced_6 = weekday_6.slice(0, 2);
     weekday_5 = formatedDates[formatedDates.length-5];
@@ -315,7 +325,6 @@ function fetchData(country) {
 
 
  //MapData function creates a 2D array with country names and their cases. This array is used to build the world map
-
 // function mapData(result){
 //   create_map=0;     //we only have to make map when app is running for the first time
 //   var flag=0;       //flag stores if a country contains predicted cases data or not. Loop will break when flag=1
