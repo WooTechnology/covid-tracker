@@ -5,11 +5,14 @@ const total_cases_element = document.querySelector(".th-5 .value");
 const recovered_element = document.querySelector(".th-2 .value");
 
 const deaths_element = document.querySelector(".th-3 .value");
+const test_done_element = document.querySelector(".th-4 .value");
 const country_element = document.querySelector(".th-6 .value");
+
 
 const world_confirmed_element= document.querySelector(".side-table-1 .value");
 const world_recovered_element= document.querySelector(".side-table-2 .value");
 const world_deaths_element= document.querySelector(".side-table-3 .value");
+const world_active_element= document.querySelector(".side-table-4 .value");
 
 const weekday_7_element= document.querySelector(".value-1");
 const weekday_6_element= document.querySelector(".value-2");
@@ -28,16 +31,16 @@ let app_data = [],
   recovered_list = [],
   deaths_list = [],
   deaths = [],
+  test_done_list= [],
   formatedDates = [],
   world_confirmed_data,
   world_recovered_data,
   world_deaths_data,
   countries2d = [];
-  country2dcases_list = [];
-  country2dlast_confirmed = [];
 
-  var create_map= 1;
-  
+  var all_countries_data = {};
+  // var create_map= 1;
+
 // GET USERS COUNTRY CODE
 let country_code = geoplugin_countryCode();
 let user_country;
@@ -49,78 +52,58 @@ country_list.forEach((country) => {
 fetchData(user_country);
 
 function get_countries2d(){
-  // for(i=0; i<country_list.length;++i){
-    for(i=0; i<9;++i){
-     console.log(country_list[i].name);
-      function1(country_list[i].name);
-  }
-  // for(i=0; i<country_list.length;++i){
-  //   countries2d.push([country_list[i].name, parseInt(country2dlast_confirmed[i])]);
-  // }
-  // console.log("countries 2d array is ");
-  //  console.log(countries2d);
-}
-get_countries2d();
-
-  function function1(country){
-  country_name = country;
-  // console.log("user country is" + country_name);
-  country2dcases_list = [];
-
   var requestOptions = {
     method: "GET",
     redirect: "follow",
   };
 
-  const api_fetch = async (country) => {
-    await fetch(
-      "https://api.covid19api.com/total/country/" +
-        country +
-        "/status/confirmed",
-      requestOptions
-    )
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        // console.log("inside then(data) for " + country);
-        data.forEach((entry) => {
-          
-          // console.log(entry.Cases);
-           country2dcases_list.push(entry.Cases);
-        });
-        // console.log(country2dcases_list[country2dcases_list.length-1]);
-        countries2d.push([country, country2dcases_list[country2dcases_list.length-1]]);
-        // country2dlast_confirmed.push(country2dcases_list[country2dcases_list.length-1]);
-      });
-    };
-  
-    api_fetch(country);  
+  fetch(
+    "https://corona-api.com/countries",
+    requestOptions
+  )
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      // console.log(data);
+      // console.log(data.data);
+      all_countries_data = data.data;
+      populate_countries2d();
+    });
+}
+get_countries2d();
+
+function populate_countries2d(){
+  // console.log(all_countries_data);
+  countries2d.push(['Country', 'Confirmed Cases']);
+  for(i=0; i<all_countries_data.length;++i){
+    // var country = all_countries_data[i].name;
+    // var cases =  all_countries_data[i].latest_data.confirmed;
+    // console.log(all_countries_data[i].name);
+    // console.log(all_countries_data[i].latest_data.confirmed);
+    countries2d.push([all_countries_data[i].name, all_countries_data[i].latest_data.confirmed]);
   }
-  
-  
-
-
-
-
+  // console.log(countries2d);
+  // console.log(countries2d[2][1]);
+  createMap();
+}
 
 function fetchData(country) {
-  // console.log("fetchdata running")
     user_country = country;
     country_name_element.innerHTML = "Loading...";
-  
+
     (cases_list = []),
       (recovered_list = []),
       (deaths_list = []),
       (dates = []),
       (formatedDates = []);
-     
-  
+
+
     var requestOptions = {
       method: "GET",
       redirect: "follow",
     };
-  
+
     const api_fetch = async (country) => {
       await fetch(
         "https://api.covid19api.com/total/country/" +
@@ -135,11 +118,11 @@ function fetchData(country) {
           data.forEach((entry) => {
             dates.push(entry.Date);
             // console.log(dates[dates.length-1]);
-            
+
             cases_list.push(entry.Cases);
           });
         });
-  
+
       await fetch(
         "https://api.covid19api.com/total/country/" +
           country +
@@ -151,11 +134,11 @@ function fetchData(country) {
         })
         .then((data) => {
           data.forEach((entry) => {
-            
+
             recovered_list.push(entry.Cases);
           });
         });
-  
+
       await fetch(
         "https://api.covid19api.com/total/country/" + country + "/status/deaths",
         requestOptions
@@ -165,12 +148,32 @@ function fetchData(country) {
         })
         .then((data) => {
           data.forEach((entry) => {
-            
+
             deaths_list.push(entry.Cases);
           });
         });
 
+        //tests done
+        await fetch(
+          "https://corona.lmao.ninja/v2/countries/" +
+            country ,
+          requestOptions
+        )
+          .then((res) => {
+            return res.json();
+          })
+          .then((data) => {
+            test_done_list= data.tests;
+            console.log(data);
+            // data.forEach((entry) => {
+            //   dates.push(entry.Date);
+            //   // console.log(dates[dates.length-1]);
+            //
+            //   cases_list.push(entry.Cases);
+            // });
+          });
 
+        //Fetching Statistics for entire World
         await fetch(
           "https://covid19.mathdro.id/api",
           requestOptions
@@ -183,46 +186,51 @@ function fetchData(country) {
             world_recovered_data = data.recovered.value;
             world_deaths_data = data.deaths.value;
           });
+
       updateUI();
     };
-  
+
     api_fetch(country);
-    
+
   }
-  
+
   // fetchData(user_country);
-  
+
   // UPDATE UI FUNCTION
   function updateUI() {
     updateStats();
     axesLinearChart();
   }
-  
+
   function updateStats() {
     const total_cases = cases_list[cases_list.length - 1];
     // const new_confirmed_cases = total_cases - cases_list[cases_list.length - 2];
-    
+
     const total_recovered = recovered_list[recovered_list.length - 1];
     // const new_recovered_cases =
     //   total_recovered - recovered_list[recovered_list.length - 2];
-    
+
     const total_deaths = deaths_list[deaths_list.length - 1];
     // const new_deaths_cases = total_deaths - deaths_list[deaths_list.length - 2];
     const total_country = country_list.length;
+
     country_name_element.innerHTML = user_country;
     total_cases_element.innerHTML = total_cases;
     // new_cases_element.innerHTML = `+${new_confirmed_cases}`;
     recovered_element.innerHTML = total_recovered;
     // new_recovered_element.innerHTML = `+${new_recovered_cases}`;
     deaths_element.innerHTML = total_deaths;
+    test_done_element.innerHTML = test_done_list;
     // new_deaths_element.innerHTML = `+${new_deaths_cases}`;
     active_element.innerHTML= total_cases- total_recovered;
-  country_element.innerHTML = country_list.length;
-  world_confirmed_element.innerHTML= world_confirmed_data;
-  world_recovered_element.innerHTML= world_recovered_data;
-  world_deaths_element.innerHTML= world_deaths_data;
-  
-  
+   country_element.innerHTML = country_list.length;
+   world_confirmed_element.innerHTML= world_confirmed_data;
+   world_recovered_element.innerHTML= world_recovered_data;
+   world_deaths_element.innerHTML= world_deaths_data;
+   world_active_element.innerHTML=  world_confirmed_data- world_recovered_data;
+    
+
+
 
     // format dates
     dates.forEach((date) => {
@@ -245,7 +253,7 @@ function fetchData(country) {
     sliced_2 = weekday_2.slice(0, 2);
     weekday_1 = formatedDates[formatedDates.length-1];
     sliced_1 = weekday_1 .slice(0, 2);
-    
+
 
     weekday_7_element.innerHTML= sliced_7;
     weekday_6_element.innerHTML= sliced_6;
@@ -254,16 +262,16 @@ function fetchData(country) {
     weekday_3_element.innerHTML= sliced_3;
     weekday_2_element.innerHTML= sliced_2;
     weekday_1_element.innerHTML= sliced_1;
-   
+
   }
-  
+
   // UPDATE CHART
   let my_chart;
   function axesLinearChart() {
     if (my_chart) {
       my_chart.destroy();
     }
-  
+
     my_chart = new Chart(ctx, {
       type: "line",
       data: {
@@ -301,7 +309,7 @@ function fetchData(country) {
       },
     });
   }
-  
+
   // FORMAT DATES
   const monthsNames = [
     "Jan",
@@ -316,68 +324,51 @@ function fetchData(country) {
     "Nov",
     "Dec",
   ];
-  
+
   function formatDate(dateString) {
     let date = new Date(dateString);
-  
+
     return `${date.getDate()} ${monthsNames[date.getMonth() - 1]}`;
   }
 
 
- //MapData function creates a 2D array with country names and their cases. This array is used to build the world map
-// function mapData(result){
-//   create_map=0;     //we only have to make map when app is running for the first time
-//   var flag=0;       //flag stores if a country contains predicted cases data or not. Loop will break when flag=1
-//   countries2d.push(['Country', 'Confirmed Cases']);
-//   for(i=1; i<result.values.length-1;++i){
-//     if(result.values[i][0]!= result.values[i+1][0] && flag==0)   //for countries with no predicted dataset. First condition checks if a country's data is finished and flag checks if a country contains predicted dataset
-//       countries2d.push([result.values[i][0], parseInt(result.values[i][2])]);
-//     else if(!result.values[i+1][2] && result.values[i][0]== result.values[i+1][0] && flag==0){   //no confirmed cases[2] but country's data is not finsihed[0] this means predicted dataset is present
-//       flag=1;
-//       countries2d.push([result.values[i][0], parseInt(result.values[i][2])]);
-//     }
-//     else if(result.values[i][0]!= result.values[i+1][0])     //country changed
-//       flag=0;
-//   }
-//   createMap();
-// }
+
+function createMap(){
+  console.log("running createmap");
+  google.charts.load('current', {
+        'packages':['geochart'],
+        'mapsApiKey': 'AIzaSyB2AdWGI5geyvPnxxTPKUv6rUvbrLuK8bE'
+      });
+      google.charts.setOnLoadCallback(drawRegionsMap);
+
+      function drawRegionsMap() {
+        var data = google.visualization.arrayToDataTable(countries2d);
+
+        var options = {
+          colorAxis: {colors: ['#fce9c4','#f8cb74','#f7c461','#f5b539','#dda333','#d5873f','#ac7f28','#941e40'], stroke: '#34c', strokeWidth: 130},
+          backgroundColor: {fill:'transparent',stroke:'#fff' ,strokeWidth:0 },
+          datalessRegionColor: '#F5F0E7',
+          displayMode: 'regions',
+          enableRegionInteractivity: 'true',
+          resolution: 'countries',
+          sizeAxis: {minValue: 1, maxValue:1,minSize:10, maxSize: 10},
+          region:'world',
+          keepAspectRatio: true,
+          tooltip: {isHtml:'true',textStyle: {color: '#444444'}, trigger:'focus'}};
+
+        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
 
 
-// function createMap(){
-//   google.charts.load('current', {
-//         'packages':['geochart'],
-//         'mapsApiKey': 'AIzaSyB2AdWGI5geyvPnxxTPKUv6rUvbrLuK8bE'
-//       });
-//       google.charts.setOnLoadCallback(drawRegionsMap);
+        //To update statistics when a region is clicked
+        google.visualization.events.addListener(chart, "regionClick", function (eventData) {
+          let countrycode= eventData.region;
+          for (i=0;i<country_list.length;++i){
+            if(country_list[i].code == eventData.region){
+              fetchData(country_list[i].name);
+            }
+          }
+        })
 
-//       function drawRegionsMap() {
-//         var data = google.visualization.arrayToDataTable(countries2d);
-
-//         var options = {
-//           colorAxis: {colors: ['#fce9c4','#f8cb74','#f7c461','#f5b539','#dda333','#d5873f','#ac7f28','#941e40'], stroke: '#34c', strokeWidth: 130},
-//           backgroundColor: {fill:'transparent',stroke:'#fff' ,strokeWidth:0 },
-//           datalessRegionColor: '#F5F0E7',
-//           displayMode: 'regions',
-//           enableRegionInteractivity: 'true',
-//           resolution: 'countries',
-//           sizeAxis: {minValue: 1, maxValue:1,minSize:10, maxSize: 10},
-//           region:'world',
-//           keepAspectRatio: true,
-//           tooltip: {isHtml:'true',textStyle: {color: '#444444'}, trigger:'focus'}};
-
-//         var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
-
-
-//         //To update statistics when a region is clicked
-//         google.visualization.events.addListener(chart, "regionClick", function (eventData) {
-//           let countrycode= eventData.region;
-//           for (i=0;i<country_list.length;++i){
-//             if(country_list[i].code == eventData.region){
-//               fetchData(country_list[i].name);
-//             }
-//           }
-//         })
-
-//         chart.draw(data, options);
-//       }
-// }
+        chart.draw(data, options);
+      }
+}
