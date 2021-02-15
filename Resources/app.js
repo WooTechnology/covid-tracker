@@ -315,6 +315,7 @@ function fetchData(country) {
 
 
  //MapData function creates a 2D array with country names and their cases. This array is used to build the world map
+
 // function mapData(result){
 //   create_map=0;     //we only have to make map when app is running for the first time
 //   var flag=0;       //flag stores if a country contains predicted cases data or not. Loop will break when flag=1
