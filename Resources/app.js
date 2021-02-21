@@ -39,6 +39,7 @@ let app_data = [],
   countries2d = [];
 
   var all_countries_data = {};
+  var sorted_countries2d = [];
   // var create_map= 1;
 
 // GET USERS COUNTRY CODE
@@ -84,6 +85,18 @@ function populate_countries2d(){
     countries2d.push([all_countries_data[i].name, all_countries_data[i].latest_data.confirmed]);
   }
   // console.log(countries2d);
+
+//Making array as inbuilt sort function can only be used on array
+  for(i=0; i<countries2d.length;++i){
+    sorted_countries2d.push(countries2d[i]);
+}
+
+sorted_countries2d.sort(function(a, b) {
+    return b[1] - a[1];
+});
+console.log(sorted_countries2d);
+
+
   // console.log(countries2d[2][1]);
   createMap();
 }
@@ -164,7 +177,7 @@ function fetchData(country) {
           })
           .then((data) => {
             test_done_list= data.tests;
-            console.log(data);
+            // console.log(data);
             // data.forEach((entry) => {
             //   dates.push(entry.Date);
             //   // console.log(dates[dates.length-1]);
@@ -227,7 +240,7 @@ function fetchData(country) {
    world_confirmed_element.innerHTML= world_confirmed_data;
    world_recovered_element.innerHTML= world_recovered_data;
    world_deaths_element.innerHTML= world_deaths_data;
-   world_active_element.innerHTML=  world_confirmed_data- world_recovered_data;
+   world_active_element.innerHTML=  world_confirmed_data- world_recovered_data- world_deaths_data;
     
 
 
