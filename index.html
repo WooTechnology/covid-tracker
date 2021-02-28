@@ -53,9 +53,9 @@
   <body>
       <header>
             <div class="header-left">
-                <img class="main-logo" src="corona-virus-logo.png" >
+                <a href="#" target="_blank"> <img class="main-logo" src="corona-virus-logo.png"></a>
                 <!--<i class="fas fa-viruses"></i>-->
-                <a href="#" class="Website-name"><strong><bold>Covid-19 Global Tracker</bold></strong></a>
+                <a href="#" class="Website-name" target="_blank"><strong><bold>Covid-19 Global Tracker</bold></strong></a>
             </div>
             <div class="header-middle">
               <!-- <input
@@ -63,11 +63,11 @@
                 id="search-input-prev"
                 placeholder="Search S..."
               /> -->
+              <i class="top-icons search-icon fas fa-search-location white-icon"></i>
               <input
                 type="text"
                 id="search-input"
         
-         +
                 placeholder="Search Country..."
               />
               <div class="search-country hide">
@@ -76,64 +76,66 @@
                 </div>
                 <div class="country-list"></div>
               </div>
-                <a href="http://clingen.igib.res.in/plavicov/"><i class="top-icons fas fa-tint blood"></i></a>
-                <i class="top-icons fas fa-hospital white-icon"></i>
-                <i class="top-icons fas fa-first-aid white-icon"></i>
-
+              
             </div>
             <div class="header-right">
+              <a href=" https://www.linkedin.com/in/monalika7" target="_blank"><i class="top-icons fab fa-linkedin white-icon"></i></a>
+              <a href="https://www.linkedin.com/mwlite/in/rumali-siddiqua-bracu" target="_blank"><i class="top-icons fab fa-linkedin white-icon"></i></a>
 
             </div>
 
       </header>
       <main>
         <section class="navbar-section">
-            <i class="fas fa-home"></i>
-            <a href="https://www.webmd.com/lung/covid-19-symptoms#1"> <i class="fas fa-virus"></i></a>
-            <a href="https://www.google.com/search?rlz=1C1CHBD_enIN938IN938&sxsrf=ALeKk027iaEN_l1KNEyp3xpRoliVqufkWA%3A1614359985134&ei=sS05YJnPB5DyrAHO15jYBQ&q=covid-19+self+care&oq=covid-19+self+care&gs_lcp=Cgdnd3Mtd2l6EAMyAggAMgIIADICCAAyAggAMgYIABAWEB4yBggAEBYQHjIFCAAQhgMyBQgAEIYDMgUIABCGAzIFCAAQhgM6CQgAELADEAgQHjoECCMQJzoLCAAQsQMQgwEQkQI6BQgAEJECOggIABCxAxCDAToLCAAQsQMQgwEQyQM6BQgAEJIDOgUIABDJAzoJCAAQyQMQFhAeUOE3WLpGYKlJaAFwAHgAgAHOAYgBiwySAQYwLjEwLjGYAQCgAQGqAQdnd3Mtd2l6yAEBwAEB&sclient=gws-wiz&ved=0ahUKEwjZ68_Lh4jvAhUQOSsKHc4rBlsQ4dUDCA0&uact=5"><i class="fas fa-hand-holding-medical"></i></a>
-            <i class="fas fa-clinic-medical"></i>
-            <a href="https://www.who.int/csr/disease/coronavirus_infections/faq_dec12/en/"><i class="fas fa-question"></i></a>
-            <i class="fas fa-briefcase-medical"></i>
-            <a href="https://www.google.com/search?q=covid-19+vaccine&rlz=1C1CHBD_enIN938IN938&oq=covid-19+vaccine&aqs=chrome..69i57j0i131i433l6j0i433j0i131i433j0.6193j0j7&sourceid=chrome&ie=UTF-8"><i class="fas fa-syringe"></i></a>
-            <a href="https://www.goodrx.com/blog/coronavirus-treatments-on-the-way/"><i class="fas fa-tablets"></i></a>
-            <a href="https://www.who.int/emergencies/contact"><i class="fas fa-phone"></i></a>
-        </section>
+            <a class="home-tooltip" href="#" target="_blank"><i class="fas fa-home"></i><span class="tooltiptext">Home</span></a>
+            <a class="virus-tooltip" href="https://www.who.int/health-topics/coronavirus#tab=tab_1" target="_blank"><i class="fas fa-virus"></i><span class="tooltiptext virus">Info about Corona Virus</span></a>
+            <a class="vaccine-tooltip" href="https://www.google.com/search?q=covid-19+vaccine&rlz=1C1CHBD_enIN938IN938&oq=covid-19+vaccine&aqs=chrome..69i57j0i131i433l6j0i433j0i131i433j0.6193j0j7&sourceid=chrome&ie=UTF-8" target="_blank"><i class="fas fa-syringe"></i><span class="tooltiptext">Vaccine</span></a>
+            <a class="symptoms-tooltip" href="https://www.webmd.com/lung/covid-19-symptoms#1" target="_blank"><i class="fas fa-head-side-cough"></i><span class="tooltiptext">Symptoms</span></a>
+            <a class="selfcare-tooltip" href="https://www.google.com/search?rlz=1C1CHBD_enIN938IN938&sxsrf=ALeKk027iaEN_l1KNEyp3xpRoliVqufkWA%3A1614359985134&ei=sS05YJnPB5DyrAHO15jYBQ&q=covid-19+self+care&oq=covid-19+self+care&gs_lcp=Cgdnd3Mtd2l6EAMyAggAMgIIADICCAAyAggAMgYIABAWEB4yBggAEBYQHjIFCAAQhgMyBQgAEIYDMgUIABCGAzIFCAAQhgM6CQgAELADEAgQHjoECCMQJzoLCAAQsQMQgwEQkQI6BQgAEJECOggIABCxAxCDAToLCAAQsQMQgwEQyQM6BQgAEJIDOgUIABDJAzoJCAAQyQMQFhAeUOE3WLpGYKlJaAFwAHgAgAHOAYgBiwySAQYwLjEwLjGYAQCgAQGqAQdnd3Mtd2l6yAEBwAEB&sclient=gws-wiz&ved=0ahUKEwjZ68_Lh4jvAhUQOSsKHc4rBlsQ4dUDCA0&uact=5" target="_blank"><i class="fas fa-hand-holding-medical"></i><span class="tooltiptext selfcare">Self Care</span></a>
+            <a class="measures-tooltip" href="https://www.who.int/southeastasia/outbreaks-and-emergencies/novel-coronavirus-2019/protective-measures" target="_blank"><i class="fas fa-head-side-mask"></i><span class="tooltiptext measures">Protective Measures</span></a>
+            <a class="testing-tooltip" href="https://www.google.com/search?q=corona+virus+protective+measures&rlz=1C1CHBD_enIN938IN938&oq=corona+virus+protective+measures&aqs=chrome..69i57j0i10l2j0i10i22i30j0i390l2.9632j0j7&sourceid=chrome&ie=UTF-8#wptab=s:H4sIAAAAAAAAAONgVuLVT9c3NMwySk6OL8zJecTozS3w8sc9YSmnSWtOXmO04eIKzsgvd80rySypFNLjYoOyVLgEpVB1ajBI8XOhCvHsYhL2yU9OzHFOLElNzy_KBDJDEpMWsQo75xfl5yWWZRaVFiuUpBaXZOalAwDK5zNpiwAAAA" target="_blank"><i class="fas fa-vials"></i><span class="tooltiptext">Testing</span></a>
+            <a class="medications-tooltip" href="https://www.goodrx.com/blog/coronavirus-treatments-on-the-way/" target="_blank"><i class="fas fa-tablets"></i><span class="tooltiptext">Medications</span></a>
+            <a class="donate-tooltip" href="http://clingen.igib.res.in/plavicov/" target="_blank"><i class="fas fa-tint"></i> <span class="tooltiptext donate">Donate Plasma</span></a>
+            <a class="news-tooltip" href="https://www.google.com/search?q=corona+virus+protective+measures&rlz=1C1CHBD_enIN938IN938&oq=corona+virus+protective+measures&aqs=chrome..69i57j0i10l2j0i10i22i30j0i390l2.9632j0j7&sourceid=chrome&ie=UTF-8#wptab=s:H4sIAAAAAAAAAONgVuLVT9c3NMwySk6OL8zJecTozS3w8sc9YSmnSWtOXmO04eIKzsgvd80rySypFNLjYoOyVLgEpVB1ajBI8XOhCvHsYmLzSSxJLS5ZxMrtnF-Un5dYlllUWgwAOiVTd3YAAAA" target="_blank"><i class="fas fa-newspaper"></i><span class="tooltiptext">News</span></a>
+            <a class="faq-tooltip" href="https://www.who.int/csr/disease/coronavirus_infections/faq_dec12/en/" target="_blank"><i class="fas fa-question"></i><span class="tooltiptext">FAQs</span></a>
+            <a class="helplines-tooltip" href="https://www.who.int/emergencies/contact" target="_blank"><i class="fas fa-phone"></i><span class="tooltiptext">Helplines</span></a>
+            <!-- <i class="fas fa-clinic-medical"></i> -->
+            <!-- <i class="fas fa-briefcase-medical"></i> -->
+          </section>
         <section class="middle-section">
             <div class="tabs">
                 <!-- <a href="#" class="tab tab-1"><strong><bold>Tracking Covid-19</bold></strong> -->
-                  <div class="dropdown">
-                    <a class="tab tab-1"><strong><bold>Tracking Covid-19</bold></strong></a>
-                    <div class="dropdown-content">
-                      <a href="https://www.mayoclinic.org/diseases-conditions/coronavirus/symptoms-causes/syc-20479963">Symptoms of Corona Virus</a>
-                      <a href="#">Testing Centres</a>
-                      <a href="https://www.webmd.com/lung/covid-treatment-home-hospital#1">Treatment</a>
-                      <a href="https://www.narayanahealth.org/blog/covid-19-protocol-isolation-quarantine-social-distancing/">Quarantine</a>
-                      <a href="https://www.iatatravelcentre.com/world.php">Rules & guidelines for Travel</a>
-                      <a href="https://www.who.int/news/item/30-03-2020-who-releases-guidelines-to-help-countries-maintain-essential-health-services-during-the-covid-19-pandemic">Current Rules & Guidelines</a>
-                      <a href="https://www.who.int/docs/default-source/coronaviruse/getting-workplace-ready-for-covid-19.pdf">Rules & Guidelines for Workspace</a>
-                      <a href="https://housing.com/news/10-things-housing-societies-must-know-to-fight-coronavirus/">Rules & Guidelines for Housing Societies</a>
-                    </div>
-                  </div>
-                  <div class="dropdown">
-                    <a class="tab tab-2"><strong><bold>Understanding Covid-19</bold></strong></a>
-                    <div class="dropdown-content">
-                      <a href="urnal.biomedcentral.com/articles/10.1186/s40249-020-00688-1#:~:text=SARS-CoV-2%20belongs%20to,bats%2C%20and%20likely%20involvement%20of">Biology of SARS-COV-2</a>
-                      <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/global-research-on-novel-coronavirus-2019-ncov">Best Research on COVID</a>
-                      <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public">How to protect yourself?</a>
-                      <a href="#">How medical stuff works?</a>
-                      <a href="#">Key Insights</a>
-                    </div>
-                  </div>
-                  <div class="dropdown">
-                    <a class="tab tab-3"><strong><bold>World Fights Corona</bold></strong></a>
-                    <div class="dropdown-content">
-                      <a href="https://www.who.int/campaigns/connecting-the-world-to-combat-coronavirus">World Fights Corona</a>
-                  </div>
                   
+                  <div class="tab tab-1"><strong><bold>Tracking Covid-19</bold></strong>
+                    <div class="dropdown-content">
+                      <a href="https://www.mayoclinic.org/diseases-conditions/coronavirus/symptoms-causes/syc-20479963" target="_blank">Symptoms of Corona Virus</a>
+                      <!-- <a href="#">Testing Centres</a> -->
+                      <a href="https://www.webmd.com/lung/covid-treatment-home-hospital#1" target="_blank">Treatment</a>
+                      <a href="https://www.narayanahealth.org/blog/covid-19-protocol-isolation-quarantine-social-distancing/" target="_blank">Quarantine</a>
+                      <a href="https://www.iatatravelcentre.com/world.php" target="_blank">Rules & guidelines for Travel</a>
+                      <a href="https://www.who.int/news/item/30-03-2020-who-releases-guidelines-to-help-countries-maintain-essential-health-services-during-the-covid-19-pandemic" target="_blank">Current Rules & Guidelines</a>
+                      <a href="https://www.who.int/docs/default-source/coronaviruse/getting-workplace-ready-for-covid-19.pdf" target="_blank">Rules & Guidelines for Workspace</a>
+                      <a href="https://housing.com/news/10-things-housing-societies-must-know-to-fight-coronavirus/" target="_blank">Rules & Guidelines for Housing Societies</a>
+                    </div>
+                  </div>
+                  <div class="tab tab-2"><strong><bold>Understanding Covid-19</bold></strong>
+                    <div class="dropdown-content">
+                      <a href="urnal.biomedcentral.com/articles/10.1186/s40249-020-00688-1#:~:text=SARS-CoV-2%20belongs%20to,bats%2C%20and%20likely%20involvement%20of" target="_blank"> Biology of SARS-COV-2</a>
+                      <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/global-research-on-novel-coronavirus-2019-ncov" target="_blank">Best Research on COVID</a>
+                      <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public" target="_blank">How to protect yourself?</a>
+                      <!-- <a href="#">How medical stuff works?</a>
+                      <a href="#">Key Insights</a> -->
+                    </div>
+                  </div>     
+                  <div class="tab tab-3"><strong><bold>World Fights Corona</bold></strong>
+                    <div class="dropdown-content">
+                      <a href="https://www.who.int/campaigns/connecting-the-world-to-combat-coronavirus" target="_blank">World Fights Corona</a>
+                    </div>
+                  </div>
             </div>
-            <div class="total-globalcases tab">
+            <!-- <div class="total-globalcases">
               <h6><strong><bold>Total Global Cases : 2,56,231 (Updated on 26th January, 2021)</bold></strong><h6>
-            </div>
+            </div> -->
 
             <div class="map">
               <div class="row body-row conatiner-fluid">
@@ -144,9 +146,9 @@
 
             <div class="main-data">
               <h1 class="country-name"><bold><strong>India</strong></bold></h1>
-              <div class="total-cases tab">
+              <!-- <div class="total-cases tab">
                 <h6><strong><bold>Total Cases in India: xxxx (Updated on 26th January, 2021)</bold></strong><h6>
-              </div>
+              </div> -->
                 <table class="main-table">
 
                   <tr>
@@ -353,6 +355,127 @@
                 <td id="td-10-country-name"></td>
                 <td id="td-10-country-cases"></td>
               </tr>
+              <tr>
+                <td id="td-11-flag"></td>
+                <td id="td-11-country-name"></td>
+                <td id="td-11-country-cases"></td>
+              </tr>
+              <tr>
+                <td id="td-12-flag"></td>
+                <td id="td-12-country-name"></td>
+                <td id="td-12-country-cases"></td>
+              </tr>
+              <tr>
+                <td id="td-13-flag"></td>
+                <td id="td-13-country-name"></td>
+                <td id="td-13-country-cases"></td>
+              </tr>
+              <tr>
+                <td id="td-14-flag"></td>
+                <td id="td-14-country-name"></td>
+                <td id="td-14-country-cases"></td>
+              </tr>
+              <tr>
+                <td id="td-15-flag"></td>
+                <td id="td-15-country-name"></td>
+                <td id="td-15-country-cases"></td>
+              </tr>
+              <tr>
+                <td id="td-16-flag"></td>
+                <td id="td-16-country-name"></td>
+                <td id="td-16-country-cases"></td>
+              </tr>
+              <tr>
+                <td id="td-17-flag"></td>
+                <td id="td-17-country-name"></td>
+                <td id="td-17-country-cases"></td>
+              </tr>
+              <tr>
+                <td id="td-18-flag"></td>
+                <td id="td-18-country-name"></td>
+                <td id="td-18-country-cases"></td>
+              </tr>
+              <tr>
+                <td id="td-19-flag"></td>
+                <td id="td-19-country-name"></td>
+                <td id="td-19-country-cases"></td>
+              </tr>
+              <tr>
+                <td id="td-20-flag"></td>
+                <td id="td-20-country-name"></td>
+                <td id="td-20-country-cases"></td>
+              </tr>
+              <tr>
+                <td id="td-21-flag"></td>
+                <td id="td-21-country-name"></td>
+                <td id="td-21-country-cases"></td>
+              </tr>
+              <tr>
+                <td id="td-22-flag"></td>
+                <td id="td-22-country-name"></td>
+                <td id="td-22-country-cases"></td>
+              </tr>
+              <tr>
+                <td id="td-23-flag"></td>
+                <td id="td-23-country-name"></td>
+                <td id="td-23-country-cases"></td>
+              </tr>
+              <tr>
+                <td id="td-24-flag"></td>
+                <td id="td-24-country-name"></td>
+                <td id="td-24-country-cases"></td>
+              </tr>
+              <tr>
+                <td id="td-25-flag"></td>
+                <td id="td-25-country-name"></td>
+                <td id="td-25-country-cases"></td>
+              </tr>
+              <!-- <tr>
+                <td id="td-26-flag"></td>
+                <td id="td-26-country-name"></td>
+                <td id="td-26-country-cases"></td>
+              </tr>
+              <tr>
+                <td id="td-27-flag"></td>
+                <td id="td-27-country-name"></td>
+                <td id="td-27-country-cases"></td>
+              </tr>
+              <tr>
+                <td id="td-28-flag"></td>
+                <td id="td-28-country-name"></td>
+                <td id="td-28-country-cases"></td>
+              </tr>
+              <tr>
+                <td id="td-29-flag"></td>
+                <td id="td-29-country-name"></td>
+                <td id="td-29-country-cases"></td>
+              </tr>
+              <tr>
+                <td id="td-30-flag"></td>
+                <td id="td-30-country-name"></td>
+                <td id="td-30-country-cases"></td>
+              </tr>
+              <tr>
+                <td id="td-31-flag"></td>
+                <td id="td-31-country-name"></td>
+                <td id="td-31-country-cases"></td>
+              </tr>
+              <tr>
+                <td id="td-32-flag"></td>
+                <td id="td-32-country-name"></td>
+                <td id="td-32-country-cases"></td>
+              </tr>
+              <tr>
+                <td id="td-33-flag"></td>
+                <td id="td-33-country-name"></td>
+                <td id="td-33-country-cases"></td>
+              </tr>
+              <tr>
+                <td id="td-34-flag"></td>
+                <td id="td-34-country-name"></td>
+                <td id="td-34-country-cases"></td>
+              </tr> -->
+
              </table>
           <!-- <div class="lower-wrapper">
             <a href="#"><img class="data" src="graph.jpg" height="170px"></a>
@@ -368,6 +491,11 @@
     ></script>
       <!-- Google Geochart script -->
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script
+      language="JavaScript"
+      src="http://www.geoplugin.net/javascript.gp"
+      type="text/javascript"
+    ></script>
       <script src= "Wootech Project.js"></script>
     <script src= "app.js"></script> 
     
