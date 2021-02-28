@@ -34,13 +34,13 @@ let app_data = [],
   // var create_map= 1;
 
 // GET USERS COUNTRY CODE
-let country_code = geoplugin_countryCode();
-let user_country;
-country_list.forEach((country) => {
-  if (country.code == country_code) {
-    user_country = country.name;
-  }
-});
+// let country_code = geoplugin_countryCode();
+let user_country = "Germany";
+// country_list.forEach((country) => {
+//   if (country.code == country_code) {
+//     user_country = country.name;
+//   }
+// });
 fetchData(user_country);
 
 function get_countries2d(){
