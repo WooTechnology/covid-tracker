@@ -33,6 +33,7 @@ height:50px;
 
 .header-left {
 float: left;
+width: 25%;
 }
 
 .header-left a{
@@ -40,44 +41,67 @@ line-height: 50px;
 height: 50px;
 display: inline-block;
 color: white;
-margin: 0 20px;
-font-size: 20px;
+margin: 0;
+font-size: 23px;
 
 }
-
+.header-middle {
+  width:25%;
+  display: flex;
+}
+.header-middle input {
+  margin: 9px 15px;
+  width: 300px;
+  }
+.search-icon {
+float: left;
+/* display:inline-block; */
+font-size: 150%;
+color: white;
+margin: 13px 5px 15px 5px;
+}
 .header-right {
 float: right;
+width: 50%;
 /*background-color: rgba(255, 255, 255, 0.3);
 transition: all 0.5s;*/
 }
-.header-middle i {
+.header-right i {
   padding: 5px;
   /* margin: 7px; */
-  float:right;
+  /* float:right; */
+  float: right;
   text-align: right;
   font-size: 150%;
   margin: 9px 8px;
   color: white;
 }
-.header-middle input {
-margin: 9px 0;
-width: 300px;
+.linkedin {
+  width:50px;
+  height: 50px;
 }
+
 .white-icon {
 color: white;
 }
 .blood {
 color: red;
 }
+.top-icons {
+  color: white;
+  float:right;
+  /* position: absolute; */
+}
 
 .navbar-section {
   background-color: rgb(106, 102, 107);
   width: 3%;
-  height: auto;
+  height: 100vh;
   font-size: 140%;
   display: flex;
   flex-direction: column;
-
+ position: fixed;
+ z-index: 10;
 }
 
 .navbar-section i{
@@ -87,18 +111,48 @@ margin: 7px;
 text-align: left;
 color: rgb(6, 8, 8);
 }
-
+.virus-tooltip , .home-tooltip, .symptoms-tooltip, .selfcare-tooltip, .measures-tooltip, .testing-tooltip, .news-tooltip, .faq-tooltip, .vaccine-tooltip, .medications-tooltip, .helplines-tooltip, .donate-tooltip{
+  position: relative;
+  /* display: inline-block; */
+}
+.virus {
+  width:400%;
+}
+.selfcare {
+  width:160%;
+}
+.measures {
+  width: 360%;
+}
+.donate {
+  width: 290%;
+}
+.tooltiptext{
+  position: absolute;
+  left: 80%;
+  top: 0;
+  display: none;
+  font-size: 15px;
+  text-align:center;
+  /* opacity: 0; */
+  transition: opacity 0.3s;
+  z-index: 1;
+  background-color: rgb(71, 71, 71);
+  color: white;
+}
+.virus-tooltip:hover .tooltiptext, .home-tooltip:hover .tooltiptext, .symptoms-tooltip:hover .tooltiptext,.selfcare-tooltip:hover .tooltiptext, .measures-tooltip:hover .tooltiptext, .testing-tooltip:hover .tooltiptext, .vaccine-tooltip:hover .tooltiptext, .news-tooltip:hover .tooltiptext, .faq-tooltip:hover .tooltiptext, .helplines-tooltip:hover .tooltiptext, .medications-tooltip:hover .tooltiptext, .donate-tooltip:hover .tooltiptext{
+  display: inline-flex;
+  float:left;
+  /* max-width: 600% !important;
+  min-width: 0; */
+}
 .middle-section {
 width: 72%;
 /* height: 100vh; */
 background-color: #0f0f0f;
 color: black;
 font-size: 100%;
-}
-.top-icons {
-
-  float:right;
-  /* position: absolute; */
+padding-left: 3%;
 }
 /* .fa-first-aid {
   margin:300px;
@@ -110,12 +164,12 @@ font-size: 100%;
 display: inline-block;
 /* position: relative; */
 height: 35px;
-width: 100%;
+width: 33.3%;
+position: relative;
 /* width: 100%; */
 text-align: center;
 /* padding-top: 5px;
 padding-bottom: 5px; */
-padding: 5px 60px 5px 60px;
 float: left;
 color: white;
 font-size:17px;
@@ -174,7 +228,7 @@ background-color: salmon;
 .dropdown-content a:hover {background-color: rgb(126, 126, 126);}
 
 /* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {display: block;}
+.tab:hover .dropdown-content {display: block;}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 /* .dropdown:hover .dropbtn {background-color: #3e8e41;} */
@@ -183,12 +237,13 @@ background-color: salmon;
   /* border: 2px solid wheat; */
   /* margin-top: 70px; */
 width: 100%;
+padding: 20px 20px 20px 3px;
 }
 #regions_div{
-  width: 80%;
-  padding: 5px;
-  
-  margin: 0 auto;
+  width: 100%;
+  /* padding: 5px; */
+  margin: 20px auto;
+  text-align: center;
 }
 
 div .total-cases {
@@ -198,27 +253,36 @@ width: 100%;
 text-align: center;
 padding-top: 5px;
 padding-bottom: 5px;
-float:left;
+float: left;
 color: white;
 background-color: rgb(233, 42, 74);
 margin-top: 25px;
 margin-bottom: 5px;
 }
+
 div .total-globalcases {
-  display: inline-block;
-height: 30px;
+display: inline-block;
 width: 100%;
 text-align: center;
-padding-top: 5px;
-padding-bottom: 5px;
+/* padding-top: 5px;
+padding-bottom: 5px; */
 float:left;
 color: white;
 background-color: rgb(224, 129, 4);
 margin: 20px 5px 10px 5px;
+/* position: relative; */
+height: 35px;
+text-align: center;
+/* padding-top: 5px;
+padding-bottom: 5px; */
+float: left;
+color: white;
+font-size:17px;
 }
 
 .country-name {
   height: 30px
+  margin-bottom: 20px;
 }
 
 .main-data {
@@ -403,9 +467,24 @@ flex-direction: column;
 .side-table {
 border:0.5px solid rgb(252, 250, 246);
 width: 70%;
-margin: 10px auto;
+margin: 20px auto;
+text-align: center;
+font-size: 17px;
 /* font-size:10px; */
 }
+.side-table th {
+padding-top: 10px;
+padding-left: 5px;
+padding-right: 5px;
+
+
+}
+.stats-table th {
+  padding:15px;
+  text-align: center;
+}
+
+
 /* .calendar-table {
 margin: 60px 0 0px 10px;
 
