@@ -3,15 +3,12 @@ const country_name_element = document.querySelector(".country-name");
 const active_element = document.querySelector(".th-1 .value");
 const total_cases_element = document.querySelector(".th-5 .value");
 const recovered_element = document.querySelector(".th-2 .value");
-
 const deaths_element = document.querySelector(".th-3 .value");
 const test_done_element = document.querySelector(".th-4 .value");
 // const country_element = document.querySelector(".th-6 .value");
-
 const world_confirmed_element= document.querySelector(".side-table-1 .value");
 const world_recovered_element= document.querySelector(".side-table-2 .value");
 const world_deaths_element= document.querySelector(".side-table-3 .value");
-
 
 const ctx = document.getElementById("axes_line_chart").getContext("2d");
 
@@ -37,13 +34,13 @@ let app_data = [],
   // var create_map= 1;
 
 // GET USERS COUNTRY CODE
-// let country_code = geoplugin_countryCode();
-let user_country = "Germany";
-// country_list.forEach((country) => {
-//   if (country.code == country_code) {
-//     user_country = country.name;
-//   }
-// });
+let country_code = geoplugin_countryCode();
+let user_country;
+country_list.forEach((country) => {
+  if (country.code == country_code) {
+    user_country = country.name;
+  }
+});
 fetchData(user_country);
 
 function get_countries2d(){
@@ -101,7 +98,7 @@ function populate_countries2d(){
 }
 
 function fetch_top_ten_countries(){
-  for(i=1; i<=10;++i){
+  for(i=1; i<=25;++i){
     for(j=0;j<country_list.length;++j){
       if(sorted_countries2d[i][0]== country_list[j].name){
         // console.log(country_list[j].code);
@@ -115,7 +112,7 @@ function fetch_top_ten_countries(){
   console.log(top_ten_country_names);
   console.log(top_ten_country_cases);
 
-  for(i=1; i<=10;++i){
+  for(i=1; i<=25;++i){
     const flag_element = document.getElementById("td-"+i+"-flag");
     const country_name_element = document.getElementById("td-"+i+"-country-name");
     const country_cases_element = document.getElementById("td-"+i+"-country-cases");
@@ -392,7 +389,7 @@ function createMap(){
           resolution: 'countries',
           sizeAxis: {minValue: 1, maxValue:1,minSize:10, maxSize: 10},
           region:'world',
-          keepAspectRatio: true,
+          keepAspectRatio: false,
           tooltip: {isHtml:'true',textStyle: {color: '#444444'}, trigger:'focus'}};
 
         var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
